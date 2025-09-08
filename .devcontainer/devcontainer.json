@@ -1,23 +1,15 @@
-// .devcontainer/devcontainer.json
 {
-  "name": "Python 3.11 + uv (slim)",
-  "image": "ghcr.io/astral-sh/uv:python3.11-bookworm-slim",
+  "name": "Python 3.11 + uv (on mcr image)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bookworm",
   "customizations": {
     "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "ms-toolsai.jupyter"
-      ],
+      "extensions": ["ms-python.python", "ms-python.vscode-pylance", "ms-toolsai.jupyter"],
       "settings": {
         "python.defaultInterpreterPath": ".venv/bin/python",
         "python.terminal.activateEnvironment": true
       }
     }
   },
-  "mounts": [
-    "source=uv-cache,target=/root/.cache/uv,type=volume"
-  ],
-  "onCreateCommand": "bash -lc 'set -eux; if [ -f pyproject.toml ]; then uv venv && uv sync --dev; elif [ -f requirements.txt ]; then uv venv && uv pip install -r requirements.txt; else echo \"No pyproject.toml or requirements.txt\"; fi'",
-  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+  "mounts": ["source=uv-cache,target=/root/.cache/uv,type=volume"],
+  "onCreateCommand": "bash -lc 'set -eux; curl -LsSf https://astral.sh/uv/install.sh | sh; export PATH=$HOME/.local/bin:$PATH; if [ -f pyproject.toml ]; then uv venv && uv sync --dev; elif [ -f requirements.txt ]; then uv venv && uv pip install -r requirements.txt; fi'"
 }
