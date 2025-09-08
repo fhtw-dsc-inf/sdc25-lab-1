@@ -1,0 +1,14 @@
+mercury==2.4.3
+mplfinance==0.12.10b0
+yfinance==0.2.31
+ipywidgets
+voila==0.5.5
+widgetsnbextension
+ipympl==0.9.3
+fastapi==0.104.1
+uvicorn
+yfinance
+plotly
+mljar
+ipympl 
+dash
