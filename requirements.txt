@@ -1,7 +1,7 @@
 mercury==2.4.3
 mplfinance==0.12.10b0
 yfinance==0.2.31
-ipywidgets==8.1.*
+ipywidgets==8.0.3
 voila==0.5.5
 widgetsnbextension
 ipympl==0.9.3
