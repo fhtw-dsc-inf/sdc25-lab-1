@@ -11,21 +11,10 @@
         "ms-toolsai.jupyter-renderers",    
         "ms-python.vscode-python-envs"     
       ],
-      "settings": {
-        "python.defaultInterpreterPath": ".venv/bin/python",
-        "python.terminal.activateEnvironment": true
-      }
     }
   },
 
-  "mounts": ["source=uv-cache,target=/root/.cache/uv,type=volume"],
+  "onCreateCommand": "pip install -r requirements.txt",
 
-  "onCreateCommand": "bash -lc 'set -eux; curl -LsSf https://astral.sh/uv/install.sh | sh; export PATH=$HOME/.local/bin:$PATH; if [ -f pyproject.toml ]; then uv venv && uv sync --dev; elif [ -f requirements.txt ]; then uv venv && uv pip install -r requirements.txt; fi'",
-
-  "updateContentCommand": "bash -lc 'set -eux; if [ -f pyproject.toml ]; then uv sync --dev; elif [ -f requirements.txt ]; then uv pip install -r requirements.txt; fi'",
-
-  "containerEnv": {
-    "PATH": "/root/.local/bin:${containerEnv:PATH}",
-    "UV_LINK_MODE": "copy"
-  },
+  "updateContentCommand": "pip install -r requirements.txt",
 }
