@@ -8,7 +8,7 @@ ipympl==0.9.3
 fastapi==0.104.1
 ipykernel==6.*
 uvicorn
-yfinance
+yfinance==0.2.65
 plotly
 mljar
 ipympl 
